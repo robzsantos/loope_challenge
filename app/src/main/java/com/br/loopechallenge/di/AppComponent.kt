@@ -1,6 +1,6 @@
 package com.br.loopechallenge.di
 
-import com.br.loopechallenge.MainActivity
+import com.br.loopechallenge.MovieListActivity
 import com.br.loopechallenge.di.modules.*
 import dagger.Component
 import javax.inject.Singleton
@@ -12,6 +12,6 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
 
-    fun inject(mainActivity: MainActivity)
+    fun inject(movieListActivity: MovieListActivity)
 
 }
