@@ -1,6 +1,9 @@
 package com.br.loopechallenge
 
+import com.br.loopechallenge.uidata.Movie
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
@@ -25,5 +28,31 @@ class MovieListPresenter @Inject constructor() {
         disposable?.dispose()
 
         disposable = null
+    }
+
+    fun getMovies() {
+        view?.startLoading()
+
+        disposable = interactor.getMovies()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({ it ->
+
+                val movies = it.map {
+                    Movie.from(it)
+                }
+
+                view?.showMovies(movies)
+
+                view?.endLoading()
+
+            }) { throwable ->
+
+                view?.endLoading()
+
+                val message: String? = throwable.message
+
+                view?.showError(message)
+            }
     }
 }
