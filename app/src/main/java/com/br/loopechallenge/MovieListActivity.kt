@@ -9,6 +9,7 @@ import com.br.loopechallenge.extensions.error
 import com.br.loopechallenge.uidata.Movie
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.progress_bar_loading.*
+import java.io.Serializable
 import javax.inject.Inject
 
 /**
@@ -28,6 +29,8 @@ class MovieListActivity : AppCompatActivity(), MovieListView {
 
     private var adapter: MovieListAdapter? = null
 
+    private var movies: List<Movie>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,7 +42,20 @@ class MovieListActivity : AppCompatActivity(), MovieListView {
 
         presenter.attachView(this)
 
-        presenter.getMovies()
+        movies = if (savedInstanceState != null) savedInstanceState.getSerializable(MOVIES) as List<Movie>? else null
+
+        if (movies == null)
+            presenter.getMovies()
+        else
+            showMovies(movies!!)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        if (movies != null) {
+            outState?.putSerializable(MOVIES, movies as Serializable)
+        }
+        super.onSaveInstanceState(outState)
+
     }
 
     override fun onDestroy() {
@@ -50,6 +66,8 @@ class MovieListActivity : AppCompatActivity(), MovieListView {
 
     override fun showMovies(movies: List<Movie>) {
         adapter?.addMovies(movies)
+
+        if (this.movies == null) this.movies = movies
     }
 
     override fun showError(message: String?) {
@@ -71,6 +89,10 @@ class MovieListActivity : AppCompatActivity(), MovieListView {
         adapter = MovieListAdapter { }
 
         recycler_view_movie_list.adapter = adapter
+    }
+
+    companion object {
+        private const val MOVIES = "movies"
     }
 
 }

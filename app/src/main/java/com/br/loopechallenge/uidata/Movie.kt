@@ -1,11 +1,12 @@
 package com.br.loopechallenge.uidata
 
 import com.br.loopechallenge.webservice.MovieInfosResponse
+import java.io.Serializable
 
 /**
  * Created by Robson on 2019-08-05.
  */
-class Movie {
+class Movie : Serializable {
 
     var name: String? = null
 
