@@ -1,13 +1,16 @@
-package com.br.loopechallenge
+package com.br.loopechallenge.movies.list
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.br.loopechallenge.LoopeChallengeApplication
+import com.br.loopechallenge.R
 import com.br.loopechallenge.di.AppComponent
 import com.br.loopechallenge.extensions.error
+import com.br.loopechallenge.movies.detail.MovieDetailsActivity
 import com.br.loopechallenge.uidata.Movie
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_movie_list.*
 import kotlinx.android.synthetic.main.progress_bar_loading.*
 import java.io.Serializable
 import javax.inject.Inject
@@ -34,7 +37,7 @@ class MovieListActivity : AppCompatActivity(), MovieListView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_movie_list)
 
         appComponent.inject(this)
 
@@ -51,11 +54,10 @@ class MovieListActivity : AppCompatActivity(), MovieListView {
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
         if (movies != null) {
             outState?.putSerializable(MOVIES, movies as Serializable)
         }
-        super.onSaveInstanceState(outState)
-
     }
 
     override fun onDestroy() {
@@ -86,7 +88,9 @@ class MovieListActivity : AppCompatActivity(), MovieListView {
         recycler_view_movie_list.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        adapter = MovieListAdapter { }
+        adapter = MovieListAdapter {
+            startActivity(MovieDetailsActivity.newInstance(this, it))
+        }
 
         recycler_view_movie_list.adapter = adapter
     }

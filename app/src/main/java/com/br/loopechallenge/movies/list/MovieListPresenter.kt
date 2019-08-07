@@ -1,4 +1,4 @@
-package com.br.loopechallenge
+package com.br.loopechallenge.movies.list
 
 import com.br.loopechallenge.uidata.Movie
 import io.reactivex.android.schedulers.AndroidSchedulers

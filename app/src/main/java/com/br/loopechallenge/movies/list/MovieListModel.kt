@@ -1,6 +1,7 @@
-package com.br.loopechallenge
+package com.br.loopechallenge.movies.list
 
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.br.loopechallenge.R
 import com.br.loopechallenge.uidata.Movie
 import com.br.loopechallenge.utils.epoxy.BinderEpoxyModel
 import com.br.loopechallenge.utils.glide.GlideApp
