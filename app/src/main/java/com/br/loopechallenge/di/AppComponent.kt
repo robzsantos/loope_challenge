@@ -1,6 +1,6 @@
 package com.br.loopechallenge.di
 
-import com.br.loopechallenge.MovieListActivity
+import com.br.loopechallenge.movies.list.MovieListActivity
 import com.br.loopechallenge.di.modules.*
 import dagger.Component
 import javax.inject.Singleton

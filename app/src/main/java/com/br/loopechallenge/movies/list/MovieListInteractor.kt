@@ -1,4 +1,4 @@
-package com.br.loopechallenge
+package com.br.loopechallenge.movies.list
 
 import com.br.loopechallenge.webservice.MovieInfosResponse
 import com.br.loopechallenge.webservice.MovieListApi

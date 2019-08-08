@@ -1,10 +1,12 @@
-package com.br.loopechallenge
+package com.br.loopechallenge.movies.list
 
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.br.loopechallenge.R
 import com.br.loopechallenge.uidata.Movie
 import com.br.loopechallenge.utils.epoxy.BinderEpoxyModel
 import com.br.loopechallenge.utils.glide.GlideApp
 import kotlinx.android.synthetic.main.item_movie.view.*
+
 
 /**
  * Created by Robson on 2019-08-05
