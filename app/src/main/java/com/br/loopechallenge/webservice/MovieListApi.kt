@@ -9,7 +9,7 @@ import retrofit2.http.GET
  */
 interface MovieListApi {
 
-    @GET("assets.json?alt=media&token=" + BuildConfig.MOVIES_TOKEN)
+    @GET(BuildConfig.MOVIES_ENDPOINT)
     fun getList(): Single<MoviesResponse>
 
 }

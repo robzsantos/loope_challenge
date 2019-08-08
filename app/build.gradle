@@ -18,15 +18,15 @@ android {
     }
     buildTypes {
         release {
-            buildConfigField "String", "MOVIES_API", "\"https://firebasestorage.googleapis.com/v0/b/desafio-dev-android.appspot.com/o/\""
-            buildConfigField "String", "MOVIES_TOKEN", "\"964a35bb-53d0-45aa-a3dd-ecad72a2f14c\""
+            buildConfigField "String", "MOVIES_API", "\"https://drive.google.com/\""
+            buildConfigField "String", "MOVIES_ENDPOINT", "\"uc?export=view&id=1rqAAfk8cZIEj4sWZ5Z_JIA2VpX3OYqrT\""
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            buildConfigField "String", "MOVIES_API", "\"https://firebasestorage.googleapis.com/v0/b/desafio-dev-android.appspot.com/o/\""
-            buildConfigField "String", "MOVIES_TOKEN", "\"964a35bb-53d0-45aa-a3dd-ecad72a2f14c\""
+            buildConfigField "String", "MOVIES_API", "\"https://drive.google.com/\""
+            buildConfigField "String", "MOVIES_ENDPOINT", "\"uc?export=view&id=1rqAAfk8cZIEj4sWZ5Z_JIA2VpX3OYqrT\""
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
